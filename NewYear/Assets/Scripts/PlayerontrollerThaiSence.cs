@@ -38,8 +38,7 @@ public class PlayerontrollerThaiSence : Photon.MonoBehaviour
 						//InstantiateBullet (transform.position + transform.forward * 2, transform.rotation, transform.TransformDirection (Vector3.forward * 40));
 						GameObject clone_enemy;
 				clone_enemy = PhotonNetwork.Instantiate ("Bullet", new Vector3 (transform.position.x, transform.position.y, transform.position.z), transform.rotation,0);
-						clone_enemy.rigidbody.velocity = new Vector3 (clone_enemy.transform.position.x, clone_enemy.transform.position.y, clone_enemy.transform.position.z * (-70f));
-				}
+				clone_enemy.rigidbody.velocity = transform.forward*80;}
 			}else{
 				if (Input.GetKey ("a") || Input.GetKey ("left")) {
 				transform.position = new Vector3 (transform.position.x + 0.3f, transform.position.y, transform.position.z);
@@ -56,9 +55,10 @@ public class PlayerontrollerThaiSence : Photon.MonoBehaviour
 			}
 			if (Input.GetKeyUp ("space")) {	
 					//InstantiateBullet (transform.position + transform.forward * 2, transform.rotation, transform.TransformDirection (Vector3.forward * 40));
-					GameObject clone_enemy;
+				GameObject clone_enemy;
+				print ("position :"+transform.position);
 				clone_enemy = PhotonNetwork.Instantiate ("Bullet2", new Vector3 (transform.position.x, transform.position.y, transform.position.z),transform.rotation,0);
-				clone_enemy.rigidbody.velocity = new Vector3 (clone_enemy.transform.position.x, clone_enemy.transform.position.y, clone_enemy.transform.position.z);
+				clone_enemy.rigidbody.velocity = transform.forward*80;
 			}
 		}
 	}
