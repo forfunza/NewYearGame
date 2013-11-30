@@ -75,12 +75,14 @@ public class RoomPage : Photon.MonoBehaviour {
 					custom.Add("Ready","0");
 					PhotonNetwork.player.SetCustomProperties(custom);
 					custom.Clear();
+				}else if(PhotonNetwork.playerList[index].customProperties["Ready"].Equals("0")){
 					readyStatus = 0;
 				}else if(PhotonNetwork.room.playerCount==1){
 					readyStatus = 0;
 				}else{
 					readyStatus = 1;
 				}
+
 
 			}
 			if(readyStatus == 1){
