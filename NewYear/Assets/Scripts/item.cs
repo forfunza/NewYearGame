@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class item : MonoBehaviour {
+public class item : Photon.MonoBehaviour {
 
 
 
 	public GameObject itemBox;
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("randomItem", 0.7F ,Random.Range(10, 20) );
+		if(PhotonNetwork.isMasterClient){
+			InvokeRepeating("randomItem", 0.7F ,Random.Range(10, 20) );
+		}
 	}
 	
 	// Update is called once per frame
@@ -18,7 +20,9 @@ public class item : MonoBehaviour {
 
 	void randomItem(){
 		GameObject cloning;
-		cloning = Instantiate (itemBox, new Vector3(Random.Range(-3.19F, 3.19F),transform.position.y,transform.position.z), transform.rotation) as GameObject;
+		PhotonNetwork.Instantiate ("Giftbox", new Vector3(Random.Range(-7.50F, 4.0F),7,transform.position.z), transform.rotation,0) ;
 		
 	}
+
+
 }
