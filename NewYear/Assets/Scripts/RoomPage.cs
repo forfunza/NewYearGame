@@ -70,6 +70,7 @@ public class RoomPage : Photon.MonoBehaviour {
 			PhotonNetwork.player.SetCustomProperties(custom);
 
 			for(int index =0 ; index < PhotonNetwork.room.playerCount;index++){
+				print("index : "+index);
 				print(PhotonNetwork.playerList[index].customProperties["Ready"]);
 				if(PhotonNetwork.playerList[index].customProperties["Ready"].Equals("0")){
 					readyStatus = 0;
@@ -88,6 +89,9 @@ public class RoomPage : Photon.MonoBehaviour {
 			}
 
 		}else{
+			ExitGames.Client.Photon.Hashtable custom2 = new ExitGames.Client.Photon.Hashtable();
+			custom2.Add("Ready","0");
+			PhotonNetwork.player.SetCustomProperties(custom2);
 			if(GUI.Button(new Rect(200,455,200,30),readyLabel)){
 				readyLabel = "Wait !!";
 				ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
