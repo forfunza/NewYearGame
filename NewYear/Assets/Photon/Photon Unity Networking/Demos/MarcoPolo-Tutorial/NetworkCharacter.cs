@@ -22,8 +22,7 @@ public class NetworkCharacter : Photon.MonoBehaviour
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
 
-            myThirdPersonController myC = GetComponent<myThirdPersonController>();
-            stream.SendNext((int)myC._characterState);
+
         }
         else
         {
@@ -31,8 +30,6 @@ public class NetworkCharacter : Photon.MonoBehaviour
             this.correctPlayerPos = (Vector3)stream.ReceiveNext();
             this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
 
-            myThirdPersonController myC = GetComponent<myThirdPersonController>();
-            myC._characterState = (CharacterState)stream.ReceiveNext();
         }
     }
 }

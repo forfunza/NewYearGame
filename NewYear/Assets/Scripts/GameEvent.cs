@@ -13,7 +13,7 @@ public class GameEvent : Photon.MonoBehaviour {
 		}else{
 			print("djkfsfnbegurgulrgwrghoirwlhfbjkrwbjkwbjkwbkjfwbgklfwekhfgkwgflwg");
 			PhotonNetwork.Instantiate("First Person Controller",
-			                          new Vector3(-1.768463f,-2.732378f,33.69859f),Quaternion.identity,0);
+			                          new Vector3(-1.768463f,-2.732378f,33.69859f),Quaternion.identity-50,0);
 		}
 	}
 	
