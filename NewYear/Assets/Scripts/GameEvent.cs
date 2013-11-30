@@ -7,8 +7,13 @@ public class GameEvent : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(PhotonNetwork.isMasterClient){
+			print("tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt");
 			PhotonNetwork.Instantiate("First Person Controller",
-		                          new Vector3(-1.768463f,-2.732378f,30.58857f),Quaternion.identity,0);
+		                          play1.transform.position,Quaternion.identity,0);
+		}else{
+			print("djkfsfnbegurgulrgwrghoirwlhfbjkrwbjkwbjkwbkjfwbgklfwekhfgkwgflwg");
+			PhotonNetwork.Instantiate("First Person Controller",
+			                          new Vector3(-1.768463f,-2.732378f,33.69859f),Quaternion.identity,0);
 		}
 	}
 	

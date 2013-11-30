@@ -62,10 +62,7 @@ public class RoomPage : Photon.MonoBehaviour {
 			}
 		}
 
-		if(GUI.Button(new Rect(200,455,200,30),"Start Game")){
-			PhotonNetwork.room.visible = false;
-			PhotonNetwork.LoadLevel("GameThaiScene");	
-		}
+
 		
 		if(PhotonNetwork.isMasterClient){
 			ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
