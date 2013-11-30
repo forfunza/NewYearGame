@@ -18,12 +18,12 @@ public class CheckTrack : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "wall") {
+		if (other.gameObject.tag == "wall") {
 			GameObject Shot;
 			Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 			PhotonNetwork.Destroy (gameObject);
 			Destroy (Shot.transform.gameObject,2);
-		}else if(other.tag == "bullet"){
+		}else if(other.gameObject.tag == "bullet"){
 			GameObject Shot;
 			Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 			PhotonNetwork.Destroy (gameObject);
