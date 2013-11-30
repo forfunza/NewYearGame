@@ -30,6 +30,7 @@ public class NetworkCharacter : Photon.MonoBehaviour
             this.correctPlayerPos = (Vector3)stream.ReceiveNext();
             this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
 
+
         }
     }
 }
