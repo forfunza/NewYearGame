@@ -16,14 +16,19 @@ public class CheckTrack : MonoBehaviour
 	
 		}
 
-		void OnTriggerEnter (Collider other)
-		{
-				if (other.tag == "bullet") {
-						GameObject Shot;
-						Shot = Instantiate (paticle, other.transform.position, other.transform.rotation) as GameObject;
-						Destroy (other.gameObject);
-						Destroy (Shot.transform.gameObject, 2);
-				}
-
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.tag == "wall") {
+			GameObject Shot;
+			Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
+			PhotonNetwork.Destroy (gameObject);
+			Destroy (Shot.transform.gameObject,2);
+		}else if(other.tag == "bullet"){
+			GameObject Shot;
+			Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
+			PhotonNetwork.Destroy (gameObject);
+			Destroy (Shot.transform.gameObject,2);
 		}
+		
+	}
 }
