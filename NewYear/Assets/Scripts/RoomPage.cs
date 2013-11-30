@@ -71,7 +71,11 @@ public class RoomPage : Photon.MonoBehaviour {
 			custom.Clear();
 
 			for(int index =0 ; index < PhotonNetwork.room.playerCount;index++){
-				print(PhotonNetwork.playerList[index].customProperties["Ready"]);
+				if(PhotonNetwork.playerList[index].customProperties["Ready"].Equals(null)){
+					custom.Add("Ready","0");
+					PhotonNetwork.player.SetCustomProperties(custom);
+					custom.Clear();
+				}
 				if(PhotonNetwork.playerList[index].customProperties["Ready"].Equals("0")){
 					readyStatus = 0;
 				}else if(PhotonNetwork.room.playerCount==1){
