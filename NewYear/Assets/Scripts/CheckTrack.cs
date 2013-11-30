@@ -23,7 +23,7 @@ public class CheckTrack : MonoBehaviour
 			Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 			PhotonNetwork.Destroy (gameObject);
 			Destroy (Shot.transform.gameObject,2);
-		}else if(other.gameObject.tag == "bullet"){
+		}else if(other.gameObject.tag == "bullet2" && PhotonNetwork.isMasterClient){
 			GameObject Shot;
 			Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 			PhotonNetwork.Destroy (gameObject);
