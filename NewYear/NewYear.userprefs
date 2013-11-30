@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Lobby.cs">
+    <Files>
+      <File FileName="Assets/Scripts/CreateCharacter.cs" Line="32" Column="17" />
+      <File FileName="Assets/Scripts/SelectWorld.cs" Line="27" Column="1" />
+      <File FileName="Assets/Scripts/Lobby.cs" Line="77" Column="22" />
+      <File FileName="Assets/Scripts/CreateRoom.cs" Line="37" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
