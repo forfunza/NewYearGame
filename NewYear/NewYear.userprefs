@@ -5,7 +5,7 @@
       <File FileName="Assets/Scripts/Emple.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/PlayerontrollerThaiSence.cs" Line="32" Column="154" />
       <File FileName="Assets/Scripts/LockScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CheckTrack.cs" Line="29" Column="29" />
+      <File FileName="Assets/Scripts/CheckTrack.cs" Line="21" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
