@@ -62,15 +62,15 @@ public class RoomPage : Photon.MonoBehaviour {
 			}
 		}
 
-
+		ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
 		
 		if(PhotonNetwork.isMasterClient){
-			ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
+
 			custom.Add("Ready","1");
 			PhotonNetwork.player.SetCustomProperties(custom);
+			custom.Clear();
 
 			for(int index =0 ; index < PhotonNetwork.room.playerCount;index++){
-				print("index : "+index);
 				print(PhotonNetwork.playerList[index].customProperties["Ready"]);
 				if(PhotonNetwork.playerList[index].customProperties["Ready"].Equals("0")){
 					readyStatus = 0;
@@ -89,14 +89,11 @@ public class RoomPage : Photon.MonoBehaviour {
 			}
 
 		}else{
-			ExitGames.Client.Photon.Hashtable custom2 = new ExitGames.Client.Photon.Hashtable();
-			custom2.Add("Ready","0");
-			PhotonNetwork.player.SetCustomProperties(custom2);
 			if(GUI.Button(new Rect(200,455,200,30),readyLabel)){
 				readyLabel = "Wait !!";
-				ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
 				custom.Add("Ready","1");
 				PhotonNetwork.player.SetCustomProperties(custom);
+				custom.Clear();
 				print(PhotonNetwork.player.customProperties["Ready"]);
 			}
 		}
@@ -108,9 +105,7 @@ public class RoomPage : Photon.MonoBehaviour {
 		if(PhotonNetwork.isMasterClient){
 			PhotonNetwork.LeaveRoom();
 		}
-		ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
-		custom.Add("Ready","0");
-		PhotonNetwork.player.SetCustomProperties(custom);
+
 		Lobby lobby = gameObject.GetComponent<Lobby>();
 		lobby.isEnable = true;
 		isEnable = false;
