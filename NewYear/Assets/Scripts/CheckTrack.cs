@@ -29,33 +29,48 @@ public class CheckTrack : Photon.MonoBehaviour
 				if(gameObject.tag == "bullet2"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
 				}
 			}else{
 				if(gameObject.tag == "bullet"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
 				}
 			}
 
 		}else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
 			if(PhotonNetwork.isMasterClient){
 				if(other.gameObject.tag == "Player2"){
-					print("222222222222222");
-					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
+					Shot = Instantiate (paticle,new Vector3(transform.position.x,transform.position.y,transform.position.z-8),transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
+
+//					photonView.RPC("setHpPlayer",PhotonTargets.All,4);
+//					setHpPlay(4);
 				}
 			}else{
 				if(other.gameObject.tag == "Player"){
-					print("1111111111111111");
-					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
+					Shot = Instantiate (paticle,new Vector3(transform.position.x,transform.position.y,transform.position.z-8),transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
+//					photonView.RPC("setHpPlayer",PhotonTargets.All,10);
+//					setHpPlay(10);
 				}
 			}
 		}
 		
 	}
+
+//	[RPC]
+//	public void setHpPlayer (int hp)
+//	{
+//		print("In It");
+//		GameEvent ge =  gameObject.GetComponent<GameEvent>();
+//		EnergyBar eg = ge.hpbar2.GetComponent<EnergyBar> ();
+//		eg.SetValueCurrent(hp);
+//
+//		//	hpbar.SetValueCurrent(hp);
+//	}
+
 }
