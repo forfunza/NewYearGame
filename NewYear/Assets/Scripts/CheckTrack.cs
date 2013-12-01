@@ -26,13 +26,13 @@ public class CheckTrack : Photon.MonoBehaviour
 			Destroy (Shot.transform.gameObject,2);
 		}else if(other.gameObject.tag == "bullet2" || other.gameObject.tag == "bullet"){
 			if(PhotonNetwork.isMasterClient){
-				if(gameObject.tag == "bullet"){
+				if(gameObject.tag == "bullet2"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
 					Destroy (Shot.transform.gameObject,2);
 				}
 			}else{
-				if(gameObject.tag == "bullet2"){
+				if(gameObject.tag == "bullet"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
 					Destroy (Shot.transform.gameObject,2);
