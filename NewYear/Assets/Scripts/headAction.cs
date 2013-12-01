@@ -15,33 +15,35 @@ public class headAction : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				if (Input.GetKey ("a") || Input.GetKey ("left")) {
-						if (isRotateRight == false) {
-								if (isFirstRotate == true) {
-										transform.Rotate (new Vector3 (0, 0, 10f));
-										isRotateRight = true;
-										isRotateLeft = false;
-								} else {
-										transform.Rotate (new Vector3 (0, 0, 20f));
-										isRotateRight = true;
-										isRotateLeft = false;
+				if (PhotonNetwork.isMasterClient) {
+						if (Input.GetKey ("a") || Input.GetKey ("left")) {
+								if (isRotateRight == false) {
+										if (isFirstRotate == true) {
+												transform.Rotate (new Vector3 (0, 0, 10f));
+												isRotateRight = true;
+												isRotateLeft = false;
+										} else {
+												transform.Rotate (new Vector3 (0, 0, 20f));
+												isRotateRight = true;
+												isRotateLeft = false;
+										}
 								}
-						}
 
-				}
-				if (Input.GetKey ("d") || Input.GetKey ("right")) {
-						if (isRotateLeft == false) {
-								if (isFirstRotate == true) {
-										transform.Rotate (new Vector3 (0, 0, -10f));
-										isRotateRight = false;
-										isRotateLeft = true;
-								} else {
-										transform.Rotate (new Vector3 (0, 0, -20f));
-										isRotateRight = false;
-										isRotateLeft = true;
-								}
 						}
+						if (Input.GetKey ("d") || Input.GetKey ("right")) {
+								if (isRotateLeft == false) {
+										if (isFirstRotate == true) {
+												transform.Rotate (new Vector3 (0, 0, -10f));
+												isRotateRight = false;
+												isRotateLeft = true;
+										} else {
+												transform.Rotate (new Vector3 (0, 0, -20f));
+												isRotateRight = false;
+												isRotateLeft = true;
+										}
+								}
 						
+						}
 				}
 		}
 }
