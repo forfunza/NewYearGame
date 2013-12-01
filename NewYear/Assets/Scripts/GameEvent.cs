@@ -7,12 +7,23 @@ public class GameEvent : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(PhotonNetwork.isMasterClient){
+			if(PhotonNetwork.player.customProperties["Character"].ToString().Equals("Boy")){
+				PhotonNetwork.Instantiate("First Person Boy Controller",
+				                          play1.transform.position,Quaternion.identity,0);
+			}else{
+				PhotonNetwork.Instantiate("First Person Girl Controller",
+				                          play1.transform.position,Quaternion.identity,0);
+			}
 
-			PhotonNetwork.Instantiate("First Person Controller",
-		                          play1.transform.position,Quaternion.identity,0);
 		}else{
-			PhotonNetwork.Instantiate("Second Person Controller",
-			                          play2.transform.position,play2.transform.rotation,0);
+			if(PhotonNetwork.player.customProperties["Character"].ToString().Equals("Boy")){
+				PhotonNetwork.Instantiate("Second Boy Person Controller",
+				                          play2.transform.position,play2.transform.rotation,0);
+			}else{
+				PhotonNetwork.Instantiate("Second Girl Person Controller",
+				                          play2.transform.position,play2.transform.rotation,0);
+			}
+
 		}
 
 
