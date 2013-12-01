@@ -15,7 +15,6 @@ public class headAction : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
-				if (!PhotonNetwork.isMasterClient) {
 						if (Input.GetKey ("a") || Input.GetKey ("left")) {
 								if (isRotateRight == false) {
 										if (isFirstRotate == true) {
@@ -44,6 +43,5 @@ public class headAction : MonoBehaviour
 								}
 						
 						}
-				}
 		}
 }

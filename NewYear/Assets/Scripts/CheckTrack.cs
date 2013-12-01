@@ -29,30 +29,28 @@ public class CheckTrack : Photon.MonoBehaviour
 				if(gameObject.tag == "bullet2"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
 				}
 			}else{
 				if(gameObject.tag == "bullet"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
 				}
 			}
 
 		}else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
 			if(PhotonNetwork.isMasterClient){
 				if(other.gameObject.tag == "Player2"){
-					print("222222222222222");
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
 				}
 			}else{
 				if(other.gameObject.tag == "Player"){
-					print("1111111111111111");
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
-					Destroy (Shot.transform.gameObject,2);
+					Destroy (Shot.transform.gameObject,1);
 				}
 			}
 		}
