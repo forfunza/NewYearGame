@@ -45,15 +45,32 @@ public class CheckTrack : Photon.MonoBehaviour
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
 					Destroy (Shot.transform.gameObject,1);
+
+//					photonView.RPC("setHpPlayer",PhotonTargets.All,4);
+//					setHpPlay(4);
 				}
 			}else{
 				if(other.gameObject.tag == "Player"){
 					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
 					Destroy (Shot.transform.gameObject,1);
+//					photonView.RPC("setHpPlayer",PhotonTargets.All,10);
+//					setHpPlay(10);
 				}
 			}
 		}
 		
 	}
+
+//	[RPC]
+//	public void setHpPlayer (int hp)
+//	{
+//		print("In It");
+//		GameEvent ge =  gameObject.GetComponent<GameEvent>();
+//		EnergyBar eg = ge.hpbar2.GetComponent<EnergyBar> ();
+//		eg.SetValueCurrent(hp);
+//
+//		//	hpbar.SetValueCurrent(hp);
+//	}
+
 }

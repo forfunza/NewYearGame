@@ -9,7 +9,7 @@ public class item : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(PhotonNetwork.isMasterClient){
-			InvokeRepeating("randomItem", 0.7F ,Random.Range(10, 20) );
+			InvokeRepeating("randomItem", 0.7F ,Random.Range(30, 50) );
 		}
 	}
 	

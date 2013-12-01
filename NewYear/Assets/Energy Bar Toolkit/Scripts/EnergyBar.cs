@@ -7,7 +7,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnergyBar : MonoBehaviour {
+public class EnergyBar : Photon.MonoBehaviour {
 
     // ===========================================================
     // Constants

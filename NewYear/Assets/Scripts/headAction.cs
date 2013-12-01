@@ -32,11 +32,13 @@ public class headAction : MonoBehaviour
 						if (Input.GetKey ("d") || Input.GetKey ("right")) {
 								if (isRotateLeft == false) {
 										if (isFirstRotate == true) {
+
 												transform.Rotate (new Vector3 (0, 0, -10f));
 												isRotateRight = false;
 												isRotateLeft = true;
 										} else {
 												transform.Rotate (new Vector3 (0, 0, -20f));
+
 												isRotateRight = false;
 												isRotateLeft = true;
 										}
