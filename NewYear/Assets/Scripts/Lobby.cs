@@ -6,17 +6,13 @@ public class Lobby : Photon.MonoBehaviour {
 	public  bool isEnable = false;
 	private string world;
 	private string character;
+	public GUISkin uiSkin;
 	void OnGUI(){
 		if(isEnable){
-			if(PhotonNetwork.player.customProperties["WorldMap"].Equals("Thai")){
-				world = "Thai";
-			}else if(PhotonNetwork.player.customProperties["WorldMap"].Equals("Japan")){
-				world = "Japan";
-			}else if(PhotonNetwork.player.customProperties["WorldMap"].Equals("International")){
-				world = "International";
-			}
-			GUI.Window( 2 , new Rect(Screen.width / 2 - 300 , Screen.height /2 - 250 , 600 ,500 ), 
-			           LobbyUI , "Game Lobby : World " + world);
+			GUI.skin = uiSkin;
+
+			GUI.Window( 2 , new Rect(0   ,0  , 1024 ,768), 
+			           LobbyUI , "");
 		}
 		
 	}
@@ -29,10 +25,17 @@ public class Lobby : Photon.MonoBehaviour {
 			isEnable = false;
 		}
 
+		if((PhotonNetwork.player.customProperties["Character"]).Equals("Boy")){
+			GUI.Box(new Rect(670,230,277,366),"","BoyChar");
+		}else{
+			GUI.Box(new Rect(670,230,277,366),"","GirlChar");
+		}
 
-		GUI.Label (new Rect(150,30,200,30),"World : "+world);
-		GUI.Box(new Rect(15,50,370,380),"");
-		if(GUI.Button(new Rect(400,360,70,70),"Boy")){
+
+;
+		GUI.Box(new Rect(30,170,621,524),"");
+		GUI.Box(new Rect(680,170,256,512),"","CharacterBox");
+		if(GUI.Button(new Rect(680,660,140,66),"","Button1")){
 			character = "Boy";
 			ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
 			custom.Add("Character",character);
@@ -40,7 +43,7 @@ public class Lobby : Photon.MonoBehaviour {
 			print("Character : "+PhotonNetwork.player.customProperties["Character"]);
 		}
 
-		if(GUI.Button(new Rect(500,360,70,70),"Girl")){
+		if(GUI.Button(new Rect(820,660,140,66),"","Button2")){
 			character = "Girl";
 			ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
 			custom.Add("Character",character);
@@ -48,31 +51,28 @@ public class Lobby : Photon.MonoBehaviour {
 			print("Character : "+PhotonNetwork.player.customProperties["Character"]);
 		}
 		
-		if(GUI.Button(new Rect(200,455,200,30),"Create Room")){
+		if(GUI.Button(new Rect(185,660,332,55),"","Button3")){
 			CreateRoom createRoom = gameObject.GetComponent<CreateRoom>();
 			createRoom.isEnable = true;
 			isEnable = false;
 		}
 		
 		RoomInfo[] gameRoomList = PhotonNetwork.GetRoomList();
-		float currentHeight = 65;
+		float currentHeight = 250;
 		int i = 0;
 		if(gameRoomList.Length > 0){
 			foreach(RoomInfo gameRoom in gameRoomList)
 			{
-				print("player : "+PhotonNetwork.player.customProperties["WorldMap"] + " Room : " + gameRoom.customProperties["WorldMap"]);
-				if(PhotonNetwork.player.customProperties["WorldMap"].Equals(gameRoom.customProperties["WorldMap"])){
-					if(GUI.Button(new Rect(30,currentHeight,330,30),gameRoom.name+"  "+
-					              gameRoom.playerCount+"/"+gameRoom.maxPlayers+" Host : "+gameRoom.customProperties["Master"])){
+		
+					if(GUI.Button(new Rect(40,currentHeight,587,50),gameRoom.name+"  "+
+					              gameRoom.playerCount+"/"+gameRoom.maxPlayers+" Host : "+gameRoom.customProperties["Master"],"RoomButton")){
 						PhotonNetwork.JoinRoom(gameRoom.name);
 					}
-					currentHeight = currentHeight + 40;
-				}else{
-					GUI.Label(new Rect(150,225,600,320),"No Room Available...");
-				}
+					currentHeight = currentHeight + 70;
+
 			}
 		}else{
-			GUI.Label(new Rect(150,225,600,320),"No Room Available...");
+
 		}
 	}
 	

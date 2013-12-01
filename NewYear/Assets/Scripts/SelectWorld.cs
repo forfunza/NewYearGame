@@ -21,13 +21,7 @@ public class SelectWorld : Photon.MonoBehaviour {
 	}
 
 	void WorldMap(int id){
-		if(GUI.Button(new Rect(10 , 510 ,50,30),"Back")){
-			CreateCharacter createCharacter = gameObject.GetComponent<CreateCharacter>();
-			createCharacter.isEnable = true;
-			createCharacter.playerName = "";
-			isEnable = false;
-			PhotonNetwork.Disconnect();
-		}
+
 		if(GUI.Button(new Rect(50,50,190,370),"Thai"))
 		{
 			selectWorld = "Thai";

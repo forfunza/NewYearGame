@@ -5,6 +5,7 @@ public class CreateRoom : Photon.MonoBehaviour {
 	public bool isEnable = true;
 	public string roomName;
 	private string world;
+	public GUISkin uiSkin;
 
 	// Use this for initialization
 	void Start () {
@@ -12,13 +13,14 @@ public class CreateRoom : Photon.MonoBehaviour {
 	}
 	void OnGUI(){
 		if(isEnable){
-			GUI.Window( 3 , new Rect(Screen.width / 2 - 200 , Screen.height /2 - 55 , 400 , 110), Room , "Create Room");
+			GUI.skin = uiSkin;
+			GUI.Window( 3 , new Rect(0   ,0  , 1024 ,768), Room , "");
 		}
 	}
 	void Room(int id){
-		roomName = GUI.TextField( new Rect(20,35,360,30),roomName,16);
-
-		if(GUI.Button(new Rect(125,70,150,30),"Create"))
+		roomName = GUI.TextField( new Rect(270,390,490,71),roomName,16);
+		GUI.Box( new Rect(250,300,564,228),"");
+		if(GUI.Button(new Rect(400,500,238,62),""))
 		{
 			if(PhotonNetwork.player.customProperties["WorldMap"].Equals("Thai")){
 				world = "Thai";

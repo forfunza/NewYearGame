@@ -8,6 +8,8 @@ public class RoomPage : Photon.MonoBehaviour {
 	private string character;
 	private string readyLabel = "Ready";
 	private int readyStatus = 1;
+	public GUISkin uiSkin;
+
 	
 	
 	// Use this for initialization
@@ -21,9 +23,9 @@ public class RoomPage : Photon.MonoBehaviour {
 	}
 	
 	void OnGUI(){
-
+		GUI.skin = uiSkin;
 		if(isEnable){
-			GUI.Window( 3 , new Rect(Screen.width / 2 - 300 , Screen.height /2 - 250 , 600 ,500 ), 
+			GUI.Window( 3 , new Rect(0   ,0  , 1024 ,768), 
 			           RoomUI , PhotonNetwork.room.name);
 		}
 	}
@@ -37,28 +39,34 @@ public class RoomPage : Photon.MonoBehaviour {
 			PhotonNetwork.LeaveRoom();
 		}
 
-		float currentHeight = 75;
-		float x = 20;
+		float currentHeight = 200;
+		float x = 80;
 		for(int index =0 ; index < PhotonNetwork.room.playerCount;index++){
 			if(PhotonNetwork.playerList[index].name.Equals(PhotonNetwork.room.customProperties["Master"])){
-				GUI.Button(new Rect(x,currentHeight,200,300),PhotonNetwork.playerList[index].name);	
+				GUI.Box(new Rect(x,currentHeight,312,524),"");	
 				if(PhotonNetwork.playerList[index].customProperties["Character"].Equals("Boy")){
 					character = "Boy";
+					GUI.Box(new Rect(x+20,currentHeight+120,277,366),"","BoyChar");
+					
 				}else if(PhotonNetwork.playerList[index].customProperties["Character"].Equals("Girl")){
-					character = "Girl";
+					character = "Girl";			
+					GUI.Box(new Rect(x+20,currentHeight+120,277,366),"","GirlChar");
 				}
-				GUI.Button(new Rect(x,currentHeight+310,200,30),PhotonNetwork.playerList[index].name+ " : " +character);
+				GUI.Label(new Rect(x+100,currentHeight+40,200,30),PhotonNetwork.playerList[index].name+ " : " +character);
 				x = x + 360;
 			}else{
-				x = 380;
-				GUI.Button(new Rect(x,currentHeight,200,300),PhotonNetwork.playerList[index].name);	
+				x = 580;
+				GUI.Box(new Rect(x,currentHeight,312,524),"");;	
 				if(PhotonNetwork.playerList[index].customProperties["Character"].Equals("Boy")){
 					character = "Boy";
+					GUI.Box(new Rect(x+20,currentHeight+120,277,366),"","BoyChar");
 				}else if(PhotonNetwork.playerList[index].customProperties["Character"].Equals("Girl")){
 					character = "Girl";
+					GUI.Box(new Rect(x+20,currentHeight+120,277,366),"","GirlChar");
 				}
-				GUI.Button(new Rect(x,currentHeight+310,200,30),PhotonNetwork.playerList[index].name+ " : " +character);
-				x = x - 360;
+				GUI.Label(new Rect(x+100,currentHeight+40,200,30),PhotonNetwork.playerList[index].name+ " : " +character);
+
+				x = x - 560;
 			}
 		}
 
@@ -86,14 +94,14 @@ public class RoomPage : Photon.MonoBehaviour {
 
 			}
 			if(readyStatus == 1){
-				if(GUI.Button(new Rect(200,455,200,30),"Start Game")){
+				if(GUI.Button(new Rect(150,580,242,66),"Start Game","Start")){
 					PhotonNetwork.room.visible = false;
 					PhotonNetwork.LoadLevel("GameThaiScene");	
 				}
 			}
 
 		}else{
-			if(GUI.Button(new Rect(200,455,200,30),readyLabel)){
+			if(GUI.Button(new Rect(600,580,242,66),readyLabel,"")){
 				readyLabel = "Wait !!";
 				custom.Add("Ready","1");
 				PhotonNetwork.player.SetCustomProperties(custom);

@@ -4,7 +4,8 @@ using System.Collections;
 public class CreateCharacter : Photon.MonoBehaviour {
 	
 	public bool isEnable = true;
-	public string playerName ;
+	public string playerName;
+	public GUISkin uiSkin;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,15 +19,16 @@ public class CreateCharacter : Photon.MonoBehaviour {
 	
 	void OnGUI(){
 		if(isEnable){
-			GUI.Window( 0 , new Rect(Screen.width / 2 - 200 , Screen.height /2 - 55 , 400 , 110), InsertName , "Login Page");
+			GUI.skin = uiSkin;
+			GUI.Window( 0 , new Rect(0   ,0  , 1024 ,768), InsertName , "");
 		}
 	}
 	
 	void InsertName(int id){
-		playerName = GUI.TextField( new Rect(20,35,360,30),playerName,16);
+		playerName = GUI.TextField( new Rect(295,450,433,61),playerName,16);
 
 
-		if(GUI.Button(new Rect(125,70,150,30),"Login"))
+		if(GUI.Button(new Rect(355,540,321,111),""))
 		{
 		
 			if(playerName == "" || playerName == null)
@@ -41,9 +43,9 @@ public class CreateCharacter : Photon.MonoBehaviour {
 	}
 	
 	void OnConnectedToPhoton(){
-		print(PhotonNetwork.playerName + " Connected ");
-		SelectWorld selectWorld = gameObject.GetComponent<SelectWorld>();
-		selectWorld.isEnable = true;
+		print(PhotonNetwork.playerName + " Connected ");;
+		Lobby lobby = gameObject.GetComponent<Lobby>();
+		lobby.isEnable = true;
 		isEnable = false;
 	}
 	
