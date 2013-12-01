@@ -80,9 +80,7 @@ public class Lobby : Photon.MonoBehaviour {
 		print("Join "+ PhotonNetwork.room.name);
 		RoomPage roomPage = gameObject.GetComponent<RoomPage>();
 		roomPage.isEnable = true;
-		ExitGames.Client.Photon.Hashtable custom = new ExitGames.Client.Photon.Hashtable();
-		custom.Add("Ready","0");
-		PhotonNetwork.player.SetCustomProperties(custom);
+
 		isEnable = false;
 	}
 

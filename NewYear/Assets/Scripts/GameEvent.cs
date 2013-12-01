@@ -14,8 +14,10 @@ public class GameEvent : Photon.MonoBehaviour {
 			PhotonNetwork.Instantiate("Second Person Controller",
 			                          play2.transform.position,play2.transform.rotation,0);
 		}
+
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
