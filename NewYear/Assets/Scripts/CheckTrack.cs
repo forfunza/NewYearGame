@@ -42,7 +42,7 @@ public class CheckTrack : Photon.MonoBehaviour
 		}else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
 			if(PhotonNetwork.isMasterClient){
 				if(other.gameObject.tag == "Player2"){
-					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
+					Shot = Instantiate (paticle,new Vector3(transform.position.x,transform.position.y,transform.position.z-8),transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
 					Destroy (Shot.transform.gameObject,1);
 
@@ -51,7 +51,7 @@ public class CheckTrack : Photon.MonoBehaviour
 				}
 			}else{
 				if(other.gameObject.tag == "Player"){
-					Shot = Instantiate (paticle,transform.position,transform.rotation) as GameObject;
+					Shot = Instantiate (paticle,new Vector3(transform.position.x,transform.position.y,transform.position.z-8),transform.rotation) as GameObject;
 					PhotonNetwork.Destroy (gameObject);
 					Destroy (Shot.transform.gameObject,1);
 //					photonView.RPC("setHpPlayer",PhotonTargets.All,10);
